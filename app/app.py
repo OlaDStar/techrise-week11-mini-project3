@@ -13,6 +13,6 @@ def hash_password(password):
 
 if __name__ == "__main__":
     app.run(
-        host=os.getenv("HOST", "0.0.0.0"),
+        host=os.getenv("HOST"),
         port=5000
     )

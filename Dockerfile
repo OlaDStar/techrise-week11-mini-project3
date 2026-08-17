@@ -8,9 +8,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-USER root
-
-ENV SECRET_KEY=SuperSecretPassword123
+ENV HOST=0.0.0.0
 
 EXPOSE 5000
 

@@ -1,20 +1,18 @@
+import os
 from flask import Flask
-import subprocess
-import hashlib
+from werkzeug.security import generate_password_hash
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def home():
-    password = "admin123"
+    return 'PayliteNG Secure App'
 
-    # Weak hash (Bandit should detect this)
-    hashed = hashlib.md5(password.encode()).hexdigest()
-
-    # Dangerous command execution
-    subprocess.call("ls", shell=True)
-
-    return f"Hash: {hashed}"
+def hash_password(password):
+    return generate_password_hash(password)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(
+        host=os.getenv("HOST", "0.0.0.0"),
+        port=5000
+    )

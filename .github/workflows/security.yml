@@ -67,7 +67,7 @@ jobs:
         run: pip install safety
 
       - name: Run Safety
-        run: safety check -r requirements.txt
+        run: safety scan -r requirements.txt
 
 
   trivy:
